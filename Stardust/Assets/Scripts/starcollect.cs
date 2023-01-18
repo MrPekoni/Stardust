@@ -4,20 +4,37 @@ using UnityEngine;
 
 public class starcollect : MonoBehaviour
 {
+	public static int starscollected;
 	private BoxCollider2D box;
-	[SerializeField] object Player;
 	// Start is called before the first frame update
 	void Start()
 	{
 		//Get the collider
 		box = GetComponent<BoxCollider2D>();
+		starscollected = (0);
 	}
 
-	private void OnCollisionEnter2D()
+	void OnTriggerEnter2D()
 	{
-		GameObject.Find("Player").GetComponent<Rigidbody2D>().gravityScale += -0.2f;
+		var player = GameObject.Find("Player");
+		player.GetComponent<Rigidbody2D>().gravityScale += -0.2f;
 		Debug.Log("Contact with Player made! Gravity reduced.");
-		GameObject.Destroy(GameObject.Find("Star"));
+		starscollected += 1;
+		if (starscollected == 1)
+        {
+			GameObject.Destroy(GameObject.Find("Star"));
+			Debug.Log("First Star Destroyed");
+		}
+		if (starscollected == 2)
+		{
+			GameObject.Destroy(GameObject.Find("Star (1)"));
+			Debug.Log("Second Star Destroyed");
+		}
+		if (starscollected == 3)
+		{
+			GameObject.Destroy(GameObject.Find("Star (2)"));
+			Debug.Log("Third Star Destroyed");
+		}
 	}
 	// Update is called once per frame
 	void Update()
@@ -26,4 +43,5 @@ public class starcollect : MonoBehaviour
 		var size = new Vector2(box.size.x, box.size.y);
 		Physics2D.OverlapBoxAll(point, size, 0f);
 	}
+
 }
