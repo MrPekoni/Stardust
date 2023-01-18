@@ -1,23 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class Restart : MonoBehaviour
 {
+    public Button button;
     // Start is called before the first frame update
     void Start()
     {
-        
+        Button btn = button.GetComponent<Button>();
+        btn.onClick.AddListener(TaskOnClick);
     }
-
-    private void OnMouseUpAsButton()
+    
+    void TaskOnClick()
     {
+        Debug.Log("You have clicked the button!");
         SceneManager.LoadScene("Level 1");
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
