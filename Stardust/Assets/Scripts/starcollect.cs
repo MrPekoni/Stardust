@@ -6,6 +6,10 @@ public class starcollect : MonoBehaviour
 {
 	public static int starscollected;
 	private BoxCollider2D box;
+	public AudioClip Starcollect1;
+	public AudioClip Starcollect2;
+	public AudioClip Starcollect3;
+	public SFX sfx;
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -23,16 +27,19 @@ public class starcollect : MonoBehaviour
 		if (starscollected == 1)
         {
 			GameObject.Destroy(GameObject.Find("Star"));
+			sfx.PlayCollect1();
 			Debug.Log("First Star Destroyed");
 		}
 		if (starscollected == 2)
 		{
 			GameObject.Destroy(GameObject.Find("Star (1)"));
+			sfx.PlayCollect2();
 			Debug.Log("Second Star Destroyed");
 		}
 		if (starscollected == 3)
 		{
 			GameObject.Destroy(GameObject.Find("Star (2)"));
+			sfx.PlayCollect3();
 			Debug.Log("Third Star Destroyed");
 		}
 	}

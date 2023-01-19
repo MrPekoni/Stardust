@@ -17,9 +17,14 @@ public class NextLevel : MonoBehaviour
         {
             SceneManager.LoadScene("Level 2");
         }
-        if (currentscene == SceneManager.GetSceneByName("Level 1"))
+        if (currentscene == SceneManager.GetSceneByName("Level 2"))
         {
-
+            SceneManager.LoadScene("Level 3");
+        }
+        if (currentscene == SceneManager.GetSceneByName("Level 3"))
+        {
+            GameObject.Find("MUSIC MAN").GetComponent<MusicClass>().StopMusic();
+            SceneManager.LoadScene("Endscreen");
         }
     }
     // Update is called once per frame
